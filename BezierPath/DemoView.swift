@@ -14,7 +14,7 @@ class DemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
      
-        self.backgroundColor = UIColor.darkGray
+//        self.backgroundColor = UIColor.darkGray
     }
      
     required init?(coder aDecoder: NSCoder) {
@@ -26,18 +26,20 @@ class DemoView: UIView {
         
         // Create an oval shape path.
 //         self.path = UIBezierPath(ovalIn: self.bounds)
-        self.path = UIBezierPath(ovalIn: CGRect(x: self.frame.size.width/2 - self.frame.size.height/2,
-                                                    y: 0.0,
-                                                    width: self.frame.size.height,
-                                                    height: self.frame.size.height))
+ 
+        path = UIBezierPath(arcCenter: CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2),
+                                radius: self.frame.size.height/2,
+                                startAngle: CGFloat(180.0).toRadians(),
+                                endAngle: CGFloat(0.0).toRadians(),
+                                clockwise: true)
         
         // Specify the fill color and apply it to the path.
           UIColor.orange.setFill()
           path.fill()
        
           // Specify a border (stroke) color.
-          UIColor.purple.setStroke()
-          path.stroke()
+//          UIColor.purple.setStroke()
+//          path.stroke()
         
     }
     
@@ -71,4 +73,11 @@ class DemoView: UIView {
     }
     
     
+}
+
+ 
+extension CGFloat {
+    func toRadians() -> CGFloat {
+        return self * CGFloat(.pi / 180.0)
+    }
 }
