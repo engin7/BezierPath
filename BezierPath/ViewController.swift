@@ -13,8 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
      
@@ -25,10 +24,7 @@ class ViewController: UIViewController {
                                               y: self.view.frame.size.height/2 - height/2,
                                               width: width,
                                               height: height))
-     
         self.view.addSubview(demoView)
     }
-    
-    
 }
 
