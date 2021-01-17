@@ -23,7 +23,13 @@ class DemoView: UIView {
 
     // will provide a context for the path:
     override func draw(_ rect: CGRect) {
-        self.createRectangle()
+        
+        // Create an oval shape path.
+//         self.path = UIBezierPath(ovalIn: self.bounds)
+        self.path = UIBezierPath(ovalIn: CGRect(x: self.frame.size.width/2 - self.frame.size.height/2,
+                                                    y: 0.0,
+                                                    width: self.frame.size.height,
+                                                    height: self.frame.size.height))
         
         // Specify the fill color and apply it to the path.
           UIColor.orange.setFill()
@@ -33,6 +39,15 @@ class DemoView: UIView {
           UIColor.purple.setStroke()
           path.stroke()
         
+    }
+    
+     
+    func createTriangle() {
+        path = UIBezierPath()
+        path.move(to: CGPoint(x: self.frame.width/2, y: 0.0))
+        path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height)) // left corner
+        path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height)) //right corner
+        path.close()
     }
     
     func createRectangle() {
